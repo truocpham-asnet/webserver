@@ -1,0 +1,38 @@
+#!/usr/bin/env node
+
+/**
+ * This script allow developer run a service of application (web, client or master scraper)
+ */
+var assert = require('assert'),
+    Configs = require('../utils/configs'),
+    DashboardServer = require('../server');
+
+///////////////////////////////////////////////////////////////////////////////
+// How to run
+//
+//  node ./bin/start
+//    To run webserver
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+
+var sys = {};
+var configs = sys.configs = Configs;
+
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+// Runs the dashboard server
+function runDashboardServer(callback) {
+
+  var dashboardServer = sys.dashboardServer = new DashboardServer({
+    configs: sys.configs
+  });
+
+  // start server
+  dashboardServer.start(callback);
+}
+
+runDashboardServer(function () {
+  // TODO
+});
