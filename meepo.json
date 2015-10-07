@@ -1,5 +1,3 @@
 {
-  "configs": "utils/configs.js",
-  "databaseEntity": "utils/db-entity/entity.js",
-  "databaseUtils": "utils/db-entity/utils.js"
+  "configs": "utils/configs.js"
 }

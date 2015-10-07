@@ -1,14 +1,4 @@
 {
-  "database": {
-    "mongodb": {
-      "connectionString": "mongodb://localhost:27017/linkedin-overview"
-    },
-    "servers": {
-      "local-dashboard": "mongodb://localhost:27017/linkedin-prod",
-      "local-overview": "mongodb://localhost:27017/linkedin-overview",
-      "plugindashboard": "mongodb://54.83.192.109:27017/bryony-scraping-prod"
-    }
-  },
   "dashboard": {
     "server": "local",
     "apiHost": "0.0.0.0",
