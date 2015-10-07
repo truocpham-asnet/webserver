@@ -10,9 +10,9 @@ var BaseController = require('../rest-controller-base'),
 module.exports = BaseController.extend({
 
   /**
-   * @overriden
+   * overriden
    */
-  dbServiceName: 'dbLinkedInScraped',
+   dbServiceName: 'dbLinkedInScraped',
 
   /**
    * overriden
@@ -37,8 +37,8 @@ module.exports = BaseController.extend({
     assert(opts.res, 'Require response');
 
     var self = this,
-        service = self.getService();
+        linkedInScapedService = self.getLinkedInService();
 
-    service.getLinkedInIdByLinkedInUrl(opts, callback);
+    linkedInScapedService.getLinkedInIdByLinkedInUrl(opts, callback);
   }
 });
