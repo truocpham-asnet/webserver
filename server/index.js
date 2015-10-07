@@ -8,23 +8,11 @@ var assert = require('assert'),
     async = require('async'),
     express = require('express'),
     http = require('http'),
-    path = require('path'),
-    session = require('express-session'),
-    bodyParser = require('body-parser'),
-    cookieParser = require('cookie-parser'),
-    expressSession = require('express-session'),
-    MongoStore = require('connect-mongo')(session),
     Log = require('log'),
     log = new Log('info'),
     ServiceBase = require('../utils/service'),
 
-    router = require('./router'),
-
-    DatabaseManager = require('../db'),
-
-    // passport
-    passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy;
+    router = require('./router');
 
 /**
  * Web admin tool server
@@ -45,38 +33,6 @@ var Server = ServiceBase.extend({
     // Create express application
     // --------------------------
     var webapp = self.webapp = express();
-
-    // Define database manager
-    var db = this.db = new DatabaseManager(this);
-
-    // webapp.use(require('express-logger')());
-    webapp.use(bodyParser.json());
-    webapp.use(bodyParser.urlencoded({ extended: false }));
-    // TODO: stop using bodyParser for now
-    //webapp.use(express.bodyParser());
-    // webapp.use(express.methodOverride());
-    webapp.use(cookieParser('jljlfjasdf8983927dhf'));
-
-    /**
-     * @author: Huytran
-     *
-     * Save user session to mongodb
-     */
-    webapp.use(expressSession({
-      secret: 'bryony',
-      store: new MongoStore({url : conf.get('database:mongodb:connectionString')}),
-      cookie: {
-        maxAge: conf.get('dashboard:session:maxAge') || 60 * 60 * 24 * 14 * 1000 // 2 weeks
-      }
-    }));
-
-    /**
-     * Frontend root
-     */
-    if (conf.get('dashboard:staticPath'))
-        webapp.use(express.static(conf.get('dashboard:staticPath')));
-    else
-        webapp.use(express.static(path.join(__dirname, '../../../leadedge-dashboard/src/dist')));
 
     // CrossDomain middleware
     var allowCrossDomain = function(req, res, next) {
@@ -101,15 +57,6 @@ var Server = ServiceBase.extend({
         conf = this.conf;
 
     async.parallel([
-      function initialDatabase(callback){
-        log.info('Init Database service ...');
-        self.db.init([
-          'dbLinkedInScraped'
-        ], function (err) {
-          if (err) return callback(err);
-          callback && callback();
-        });
-      },
       function startAPIServer(callback) {
         var port = conf.get('dashboard:apiPort');
 

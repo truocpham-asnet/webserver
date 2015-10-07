@@ -1,8 +1,14 @@
 var assert = require('assert'),
     _ = require('underscore'),
-    oop = require('node-g3').oop;
+    oop = require('node-g3').oop,
+    linkedScapedServices = require('../db/services/linkedin-scraped');
 
 var Controller = oop.Base.extend({
+
+    /**
+     * service outside db managaer
+     */
+    services: null,
 
     /**
      * Sub object must override this property
@@ -43,6 +49,14 @@ var Controller = oop.Base.extend({
         //assert(this.dbServiceName, 'Sub object must define dbServiceName');
         this.app = opts.app;
         this.db = opts.app.db;
+    },
+
+    /**
+     * Retrieve service without db of this controller
+     */
+    getLinkedInService: function() {
+      this.services = linkedScapedServices;
+      return this.services;
     },
 
     /**

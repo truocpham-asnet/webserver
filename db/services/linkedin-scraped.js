@@ -1,20 +1,9 @@
 var async = require('async'),
-  mongoose = require('mongoose'),
-  BaseDBService = require('../base-mongodb-service'),
-  assert = require('assert'),
   LinkedInBodyParser = require('../../scripts/companies/linkedin/utils'),
-  ObjectID = require('mongodb').ObjectID,
-  _ = require('underscore'),
-  request = require('request');
+  request = require('request'),
+  Services;
 
-// import models
-require('../schema/linkedin-scraped')();
-
-/**
- * Expose api.
- */
-module.exports = BaseDBService.extend({
-  modelClass: mongoose.model('DBLinkedInScraped'),
+Services = {
 
   /**
    * Re-format LinkedIn url to right url
@@ -53,4 +42,9 @@ module.exports = BaseDBService.extend({
       callback(err, linkedInId);
     });
   }
-});
+};
+
+/**
+ * Expose api.
+ */
+module.exports = Services;
