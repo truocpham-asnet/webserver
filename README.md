@@ -11,3 +11,10 @@ This is simple web server.
 /api/linkedin-scraped/get-linkedin-id?url=https://www.linkedin.com/company/4005629
 ```
 > **url** param: linkedin url
+
+### How to run
+```
+cd deploy/
+chmod +x start.sh
+./start.sh
+```
