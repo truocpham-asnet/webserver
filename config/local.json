@@ -2,6 +2,6 @@
   "dashboard": {
     "server": "local",
     "apiHost": "0.0.0.0",
-    "apiPort": 4913
+    "apiPort": 80
   }
 }
