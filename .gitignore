@@ -101,3 +101,6 @@ design/sass
 
 # scripts
 backend/scripts/companies/fixDuplicate
+
+# deny configs
+local.json

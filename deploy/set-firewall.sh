@@ -19,13 +19,6 @@ sudo iptables -I INPUT 1 -p tcp --dport 22 -j ACCEPT
 sudo iptables -I INPUT 2 -p tcp --dport 80 -j ACCEPT
 sudo iptables -I INPUT 3 -p tcp --dport 443 -j ACCEPT
 
-# Allow access from AsNet IPs and servers's IP
-# Access to MongoDB server -----------------------------------------------------
-sudo iptables -A INPUT -p tcp --dport 27017:27018 -s 117.3.103.203,27.72.0.46,10.132.61.173,10.130.95.78,10.132.104.219,10.132.102.205,10.132.126.113,10.132.68.222,10.132.238.122,10.132.108.242 -j ACCEPT
-
-# Access to Elasticsearch server------------------------------------------------
-sudo iptables -A INPUT -p tcp --dport 9200:9400 -s 117.3.103.203,27.72.0.46,10.132.61.173,10.130.95.78,10.132.104.219,10.132.102.205,10.132.126.113,10.132.68.222,10.132.238.122,10.132.108.242 -j ACCEPT
-
 # Allow access from localhost loopback
 sudo iptables -A INPUT -i lo -j ACCEPT
 
