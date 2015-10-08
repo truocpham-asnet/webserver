@@ -7,39 +7,39 @@ This is simple web server.
 
 ### API
 * Get linkedin id
-    ```
-    /api/linkedin-scraped/get-linkedin-id?url=[the_url_need_scraped]
-    ```
+```
+/api/linkedin-scraped/get-linkedin-id?url=[the_url_need_scraped]
+```
 > **url** param: linkedin url
 
 ### Add SSH private to access linkedin-helper on Bitbucket
 
 * Create shell script to add private key if not accessable
 
-    ```sh
-    sudo nano add-private-key.sh
-    ```
+```
+sudo nano add-private-key.sh
+```
 
 * **Copy** this content at below at **paste** into file just created above
 
-    ```sh
-    #!bin/bash
+```
+#!bin/bash
 
-    echo "Copy a ssh private key to server for access linkedin helper's Bitbucket"
-    echo "Private key: ~/src/linkedin-helper/deploy/id_rsa"
-    echo "Copy to: ~/.ssh"
+echo "Copy a ssh private key to server for access linkedin helper's Bitbucket"
+echo "Private key: ~/src/linkedin-helper/deploy/id_rsa"
+echo "Copy to: ~/.ssh"
 
-    # Add new key to directory
-    # How to run script:
-    # ./add-private-key.sh [server_IP]
-    sudo scp -i ~/.ssh/id_rsa ./id_rsa root@$1:~/.ssh
-    ```
+# Add new key to directory
+# How to run script:
+# ./add-private-key.sh [server_IP]
+sudo scp -i ~/.ssh/id_rsa ./id_rsa root@$1:~/.ssh
+```
 
 * Execute script just created above
 
-    ```sh
-    ./add-private-key.sh [Server-IP]
-    ```
+```
+./add-private-key.sh [Server-IP]
+```
 
 ### Clone code
 
@@ -54,11 +54,11 @@ This is simple web server.
 
 * Install environment & needed packages
 
-    ```sh
-    cd ~/src/linkedin-helper/deploy/
-    chmod +x prepare-environment.sh
-    ./prepare-environment.sh
-    ```
+```
+cd ~/src/linkedin-helper/deploy/
+chmod +x prepare-environment.sh
+./prepare-environment.sh
+```
 
 * Create config file named `backend/config/local.json`
     * Becareful when create config file.
@@ -66,10 +66,10 @@ This is simple web server.
 
 * Run script to start/restart server
 
-    ```sh
-    cd src/linkedin-helper/deploy
-    ./start-server.sh
-    ```
+```
+cd src/linkedin-helper/deploy
+./start-server.sh
+```
     
 ### Set firewall
 * public: 80, 443, 22 (public to all ip)
@@ -79,7 +79,7 @@ This is simple web server.
 
 Run script:
 
-    ```sh
-    cd ~src/bryony/deploy
-    ./set-firewall.sh
-    ```
+```
+cd ~src/bryony/deploy
+./set-firewall.sh
+```
